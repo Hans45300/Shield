@@ -10,6 +10,12 @@ Synthétiseur VA moderne basé sur un Shape Engine unifié.
 - JUCE
 - xsimd
 - CMake
+- fmt
+- spdlog
+- nlohmann/json
+- moodycamel::ConcurrentQueue
+- Catch2
+- cpptrace
 
 ## Architecture
 
