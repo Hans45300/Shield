@@ -12,9 +12,9 @@ L'objectif est de proposer une expérience de conception sonore intuitive, cohé
 
 ---
 
-# Principes Architecturaux
+## Principes Architecturaux
 
-## Shape Engine First
+### Shape Engine First
 
 Le Shape Engine constitue le cœur du système.
 
@@ -40,7 +40,7 @@ L'ensemble du système utilise les mêmes concepts, les mêmes interfaces et les
 
 ---
 
-## Visual First
+### Visual First
 
 Toute transformation sonore doit pouvoir être représentée graphiquement en temps réel.
 
@@ -50,7 +50,7 @@ Les représentations graphiques sont considérées comme des composants fonction
 
 ---
 
-## Direct Manipulation
+### Direct Manipulation
 
 Lorsqu'un paramètre possède une représentation graphique, celle-ci doit pouvoir être manipulée directement.
 
@@ -65,7 +65,7 @@ Les potentiomètres servent principalement au réglage fin.
 
 ---
 
-## Unified Modulation
+### Unified Modulation
 
 Toutes les sources de modulation utilisent :
 
@@ -78,7 +78,7 @@ Le comportement du système ne doit jamais dépendre du type de source.
 
 ---
 
-## No Hidden Architecture
+### No Hidden Architecture
 
 Aucune fonction importante du moteur ne doit être cachée derrière plusieurs niveaux de navigation.
 
@@ -90,7 +90,7 @@ Les informations essentielles doivent toujours être :
 
 ---
 
-# Architecture Globale
+### Architecture Globale
 
 ```text
 +----------------+
@@ -116,9 +116,9 @@ Les informations essentielles doivent toujours être :
 
 ---
 
-# Séparation des Responsabilités
+## Séparation des Responsabilités
 
-## Interface Utilisateur
+### Interface Utilisateur
 
 L'interface utilisateur :
 
@@ -134,7 +134,7 @@ Elle ne contient aucune logique de synthèse.
 
 ---
 
-## Parameter Store
+### Parameter Store
 
 Le système de paramètres constitue l'unique point de communication entre les couches.
 
@@ -155,7 +155,7 @@ Chaque paramètre possède :
 
 ---
 
-## Modulation Engine
+### Modulation Engine
 
 Le moteur de modulation :
 
@@ -171,7 +171,7 @@ Sa sortie est uniquement constituée de valeurs résolues.
 
 ---
 
-## Audio Engine
+### Audio Engine
 
 Le moteur audio :
 
@@ -186,9 +186,9 @@ Il reçoit uniquement des valeurs déjà résolues.
 
 ---
 
-# Architecture Temps Réel
+## Architecture Temps Réel
 
-## Contraintes
+### Contraintes
 
 Le thread audio doit rester totalement déterministe.
 
@@ -202,7 +202,7 @@ Les opérations suivantes sont interdites :
 
 ---
 
-## Communication Lock-Free
+### Communication Lock-Free
 
 Toutes les communications entre threads utilisent :
 
@@ -214,7 +214,7 @@ Aucune synchronisation bloquante n'est autorisée dans le traitement audio.
 
 ---
 
-## Publication des Snapshots
+### Publication des Snapshots
 
 Le moteur audio publie régulièrement :
 
@@ -230,9 +230,9 @@ L'interface consomme ces données sans interagir directement avec le moteur DSP.
 
 ---
 
-# Shape Engine
+## Shape Engine
 
-## Base Shapes
+### Base Shapes
 
 Le Shape Engine génère les formes fondamentales :
 
@@ -252,7 +252,7 @@ Chaque forme produit une représentation temporelle normalisée.
 
 ---
 
-## Shape Processor Framework
+### Shape Processor Framework
 
 Les transformations sont implémentées via un système extensible.
 
@@ -280,9 +280,9 @@ Chaque processor :
 
 ---
 
-# Modulation Architecture
+## Modulation Architecture
 
-## Sources
+### Sources
 
 - AHDSR
 - DAHDSR
@@ -318,7 +318,7 @@ Des modes supplémentaires pourront être introduits à l'avenir :
 
 ---
 
-# Spatial Engine
+## Spatial Engine
 
 Le moteur spatial est intégré au système de voix.
 
@@ -337,9 +337,9 @@ Aucun traitement binaural ou HRTF n'est requis dans l'architecture de base.
 
 ---
 
-# Presets
+## Presets
 
-## Format
+### Format
 
 Les presets sont stockés dans un format texte lisible.
 
@@ -352,7 +352,7 @@ Objectifs :
 
 ---
 
-## Compatibilité
+### Compatibilité
 
 Chaque preset contient :
 
@@ -370,21 +370,21 @@ Le moteur doit assurer :
 
 ---
 
-# Architecture Technique
+## Architecture Technique
 
-## Langage
+### Langage
 
 - C++20
 
-## Build System
+### Build System
 
 - CMake
 
-## Framework Principal
+### Framework Principal
 
 - JUCE
 
-## SIMD
+### SIMD
 
 - xsimd
 
@@ -394,45 +394,45 @@ Toute nouvelle brique DSP doit être pensée pour être vectorisable.
 
 ---
 
-## Bibliothèques
+### Bibliothèques
 
-### Core
+#### Bibliothèques Core
 
 - fmt
 - spdlog
 
-### Presets
+#### Bibliothèque Presets
 
 - nlohmann/json
 
-### Concurrence
+#### Concurrence
 
 - moodycamel::ConcurrentQueue
 
-### Tests
+#### Tests
 
 - Catch2
 
-### Diagnostic
+#### Diagnostic
 
 - cpptrace
 
-### Mathématiques avancées (optionnel)
+#### Mathématiques avancées (optionnel)
 
 - Eigen
 
 ---
 
-# DSP
+## DSP
 
-## Traitement Audio
+### Traitement Audio
 
 - Float 32 bits
 - Architecture compatible avec une évolution future vers Float 64
 - Modulation sample accurate
 - Audio-rate modulation sur les paramètres critiques
 
-### Paramètres Audio-Rate
+#### Paramètres Audio-Rate
 
 - Pitch
 - Phase
@@ -443,7 +443,7 @@ Toute nouvelle brique DSP doit être pensée pour être vectorisable.
 
 ---
 
-## Polyphonie
+### Polyphonie
 
 - Mono
 - Legato
@@ -451,7 +451,7 @@ Toute nouvelle brique DSP doit être pensée pour être vectorisable.
 
 ---
 
-## Optimisations
+### Optimisations
 
 Objectifs :
 
@@ -463,24 +463,24 @@ Objectifs :
 
 ---
 
-# Plateformes
+## Plateformes
 
-## Systèmes
+### Systèmes
 
 - Windows
 - macOS
 - Linux
 
-## Formats de plugins
+### Formats de plugins
 
 - VST3
 - AU (macOS)
 
 ---
 
-# Interface Utilisateur
+## Principes Interface Utilisateur
 
-## Technologie
+### Technologie
 
 - JUCE Software Renderer
 - Interface entièrement vectorielle
@@ -489,7 +489,7 @@ Objectifs :
 
 ---
 
-## Rendu
+### Rendu
 
 Le rendu graphique ne doit jamais influencer l'exécution audio.
 
@@ -497,7 +497,7 @@ Toutes les visualisations reposent exclusivement sur les snapshots publiés par 
 
 ---
 
-## Visualisations
+### Visualisations
 
 Le système doit permettre à terme l'affichage temps réel de :
 
@@ -512,9 +512,9 @@ Le système doit permettre à terme l'affichage temps réel de :
 
 ---
 
-# Qualité Logicielle
+### Qualité Logicielle
 
-## Tests
+#### Tests Qualité logicielle
 
 Les tests automatisés couvrent :
 
@@ -528,7 +528,7 @@ Les tests automatisés couvrent :
 
 ---
 
-## Journalisation
+### Journalisation
 
 La journalisation n'est jamais exécutée dans le thread audio.
 
@@ -541,7 +541,7 @@ Elle est limitée :
 
 ---
 
-# Objectifs de Performance
+## Objectifs de Performance
 
 - Temps réel garanti
 - Aucun impact du rendu UI sur l'audio
@@ -553,7 +553,7 @@ Elle est limitée :
 
 ---
 
-# Objectif Final
+## Objectif Final
 
 Shield n'est pas conçu comme une collection de fonctionnalités indépendantes.
 

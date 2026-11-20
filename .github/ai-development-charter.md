@@ -10,7 +10,7 @@ When a local optimization, shortcut or feature request conflicts with this chart
 
 ---
 
-# Project Mission
+## Project Mission
 
 Shield is a modern Virtual Analog synthesizer built around a unified Shape Engine.
 
@@ -30,7 +30,7 @@ Every contribution must reinforce that architecture.
 
 ---
 
-# Fundamental Principles
+## Fundamental Principles
 
 ## Shape Engine First
 
@@ -46,7 +46,7 @@ Feature\-specific implementations should be avoided whenever possible.
 
 ---
 
-## Unified Concepts
+### Unified Concepts
 
 Oscillators, LFOs, modulation generators and future shape\-based systems must share:
 
@@ -59,7 +59,7 @@ Do not create isolated systems that duplicate existing concepts.
 
 ---
 
-## Architecture Before Convenience
+### Architecture Before Convenience
 
 The architecture must never be compromised for implementation convenience.
 
@@ -74,9 +74,9 @@ Prefer architectural consistency over short\-term development speed.
 
 ---
 
-# Real\-Time Safety
+## Real\-Time Safety
 
-## Mandatory Rules
+### Mandatory Rules
 
 Code executed in the audio thread must never:
 
@@ -104,7 +104,7 @@ inside audio processing paths.
 
 ---
 
-## Deterministic Processing
+### Deterministic Processing
 
 The audio engine must produce deterministic results.
 
@@ -118,7 +118,7 @@ Sources of randomness must be explicitly controlled.
 
 ---
 
-## Lock\-Free Communication
+### Lock\-Free Communication
 
 Cross\-thread communication must use:
 
@@ -130,9 +130,9 @@ Audio processing must never depend on UI timing.
 
 ---
 
-# DSP Rules
+## DSP Rules
 
-## DSP First
+### DSP First
 
 Audio quality and stability always take precedence over UI requirements.
 
@@ -140,7 +140,7 @@ UI features must never degrade DSP performance.
 
 ---
 
-## SIMD First
+### SIMD First
 
 All new DSP algorithms must be designed with vectorization in mind.
 
@@ -155,7 +155,7 @@ Algorithms that cannot be vectorized should provide a clear justification.
 
 ---
 
-## Audio\-Rate Awareness
+### Audio\-Rate Awareness
 
 Parameters supporting audio\-rate modulation must be explicitly identified.
 
@@ -172,7 +172,7 @@ Current audio\-rate targets include:
 
 ---
 
-## No Hidden DSP
+### No Hidden DSP
 
 DSP processing must be traceable and understandable.
 
@@ -186,9 +186,9 @@ All DSP decisions should be documented.
 
 ---
 
-# Modulation Rules
+## Modulation Rules
 
-## Centralized Resolution
+### Centralized Resolution
 
 Modulation resolution belongs exclusively to the Modulation Engine.
 
@@ -198,7 +198,7 @@ DSP modules must not perform modulation routing.
 
 ---
 
-## Universal Modulation
+### Universal Modulation
 
 Whenever technically reasonable:
 
@@ -210,7 +210,7 @@ Exceptions must be documented.
 
 ---
 
-## Modulation Consistency
+### Modulation Consistency
 
 The same source must behave identically regardless of destination.
 
@@ -218,9 +218,9 @@ Routing logic must not introduce feature\-specific behaviors.
 
 ---
 
-# UI Rules
+## UI Rules
 
-## Strict Separation
+### Strict Separation
 
 UI and DSP are fully separated systems.
 
@@ -232,7 +232,7 @@ UI components must never:
 
 ---
 
-## Snapshot Only
+### Snapshot Only
 
 Visualizations must use only published snapshots.
 
@@ -247,7 +247,7 @@ The UI never interrogates the DSP engine directly.
 
 ---
 
-## Vector First
+### Vector First
 
 Graphical components should prioritize:
 
@@ -259,7 +259,7 @@ Avoid bitmap dependencies whenever possible.
 
 ---
 
-## Visual Consistency
+### Visual Consistency
 
 Every graphical element should follow the project's design principles:
 
@@ -270,9 +270,9 @@ Every graphical element should follow the project's design principles:
 
 ---
 
-# Parameter System Rules
+## Parameter System Rules
 
-## Single Source of Truth
+### Single Source of Truth
 
 Every parameter must exist only once.
 
@@ -282,7 +282,7 @@ Do not duplicate parameter states.
 
 ---
 
-## Unique Identification
+### Unique Identification
 
 Each parameter must have:
 
@@ -297,7 +297,7 @@ Identifiers must remain stable across versions whenever possible.
 
 ---
 
-## Serialization Safety
+### Serialization Safety
 
 Parameters must support:
 
@@ -309,9 +309,9 @@ Parameter renaming requires migration tools.
 
 ---
 
-# Preset Compatibility Rules
+## Preset Compatibility Rules
 
-## Compatibility First
+### Compatibility First
 
 Breaking preset compatibility is considered a major architectural event.
 
@@ -319,7 +319,7 @@ Avoid it whenever possible.
 
 ---
 
-## Versioning
+### Versioning
 
 Preset formats must include:
 
@@ -329,7 +329,7 @@ Preset formats must include:
 
 ---
 
-## Safe Loading
+### Safe Loading
 
 Unknown parameters:
 
@@ -339,7 +339,7 @@ Unknown parameters:
 
 ---
 
-## Migration
+### Migration
 
 Changes requiring preset migration must include:
 
@@ -349,9 +349,9 @@ Changes requiring preset migration must include:
 
 ---
 
-# Testing Rules
+## Testing Rules
 
-## Tests Are Mandatory
+### Tests Are Mandatory
 
 New functionality is incomplete without tests.
 
@@ -363,7 +363,7 @@ Every feature should include:
 
 ---
 
-## Regression Prevention
+### Regression Prevention
 
 When fixing a bug:
 
@@ -376,9 +376,9 @@ Avoid fixes without regression coverage.
 
 ---
 
-# Code Quality Rules
+## Code Quality Rules
 
-## Readability Over Cleverness
+### Readability Over Cleverness
 
 Prefer:
 
@@ -390,7 +390,7 @@ Avoid unnecessary complexity.
 
 ---
 
-## Self\-Documenting Code
+### Self\-Documenting Code
 
 Code should be understandable without excessive comments.
 
@@ -406,7 +406,7 @@ unless absolutely necessary.
 
 ---
 
-## Duplicate Logic
+### Duplicate Logic
 
 Do not duplicate behavior.
 
@@ -414,9 +414,9 @@ Extract reusable systems whenever appropriate.
 
 ---
 
-# Dependency Rules
+## Dependency Rules
 
-## Default Technology Stack
+### Default Technology Stack
 
 Core technologies:
 
@@ -436,7 +436,7 @@ Core libraries:
 
 ---
 
-## Dependency Justification
+### Dependency Justification
 
 Every new dependency must provide significant value.
 
@@ -449,7 +449,7 @@ Before introducing a dependency:
 
 ---
 
-# Platform Support
+## Platform Support
 
 Supported platforms:
 
@@ -468,7 +468,7 @@ Platform\-specific code must be isolated whenever possible.
 
 ---
 
-# Definition of Done
+## Definition of Done
 
 A task is considered complete only if:
 
@@ -485,7 +485,7 @@ Feature implementation alone is not sufficient.
 
 ---
 
-# Final Rule
+## Final Rule
 
 Whenever uncertainty exists, prioritize:
 
@@ -498,4 +498,3 @@ Whenever uncertainty exists, prioritize:
 Shield must remain a coherent system.
 
 No contribution should sacrifice long\-term architecture for short\-term convenience.
-

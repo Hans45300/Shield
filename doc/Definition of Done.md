@@ -1,4 +1,4 @@
-Une fonctionnalité n'est terminée que si :
+# Une fonctionnalité n'est terminée que si
 
 - elle compile
 - les tests passent
