@@ -1,0 +1,27 @@
+[submodule "subModules/JUCE"]
+	path = subModules/JUCE
+	url = https://github.com/juce-framework/JUCE.git
+[submodule "subModules/fmt"]
+	path = subModules/fmt
+	url = https://github.com/fmtlib/fmt.git
+[submodule "subModules/xsimd"]
+	path = subModules/xsimd
+	url = https://github.com/xtensor-stack/xsimd.git
+[submodule "subModules/spdlog"]
+	path = subModules/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "subModules/nlohmannJson"]
+	path = subModules/nlohmannJson
+	url = https://github.com/nlohmann/json.git
+[submodule "subModules/Catch2"]
+	path = subModules/Catch2
+	url = https://github.com/catchorg/Catch2.git
+[submodule "subModules/cppTrace"]
+	path = subModules/cppTrace
+	url = https://github.com/jeremy-rifkin/cpptrace.git
+[submodule "subModules/concurrentqueue"]
+	path = subModules/concurrentqueue
+	url = https://github.com/cameron314/concurrentqueue.git
+[submodule "subModules/vst3sdk"]
+	path = subModules/vst3sdk
+	url = https://github.com/steinbergmedia/vst3sdk.git
