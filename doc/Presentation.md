@@ -267,6 +267,7 @@ Exemples :
 - Compatible HiDPI
 - Aucun asset bitmap requis
 - Presets serialises en format texte lisible
+- Contrôles adaptés aux plages les plus utiles des paramètres (NormalisableRange::setSkewForCentre(), etc.)
 - Architecture extensible par Shape Processors
 - C++20
 - JUCE
